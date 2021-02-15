@@ -1,1 +1,5 @@
-# FUNNY
+# SwitchBoard UI
+
+A user-interface for SwitchBoard. Intended to be included as a SwitchBoard tool, which will supply a GUI to the systems application.
+
+This repository does not require manual intervention. Instead, it is pulled into SwitchBoard by default, on boot.
