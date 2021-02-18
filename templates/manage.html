@@ -10,13 +10,48 @@
     <thead>
     <td><b>Owner</b></td>
     <td><b>Port</b></td>
+    <td><b>Relay</b></td>
     </thead>
     {{range .Operators}}
     <tr>
         <td>{{.Email}}</td>
         <td>{{.Port}}</td>
+        <td>
+            <select id="{{.Instance}}" onchange="updateRelay('{{.Instance}}')">
+                {{if .Relay.Port}}
+                <option>{{.Relay.Port}}</option>
+                {{else}}
+                <option selected>Attach to port</option>
+                <option value="443">443</option>
+                <option value="4443">4443</option>
+                {{end}}
+            </select>
+        </td>
     </tr>
     {{end}}
 </table>
 </body>
 </html>
+<script>
+    function updateRelay(instance){
+        const relay = parseInt($(`#${instance} option:selected`).val())
+        if(relay > 0){
+            $.ajax({
+                url: '/relay',
+                type: 'POST',
+                contentType: 'application/json',
+                headers: {tag: '5577006791947779410'},
+                data: JSON.stringify({instance: instance, port: relay}),
+                success: function (data, status, options) {
+                    location.reload()
+                },
+                error: function (response, ajaxOptions, thrownError) {
+                    if(response.status === 401){
+                        console.log('Authentication failed')
+                    }
+                    console.log(thrownError)
+                }
+            });
+        }
+    }
+</script>
