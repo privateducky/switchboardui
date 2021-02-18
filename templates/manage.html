@@ -1,22 +1,22 @@
 <html>
-    <head>
-        <title>Switchboard Management</title>
-        <link rel="shortcut icon" type="image/png" href="/gui/img/favicon.png"/>
-        <link rel="stylesheet" href="/gui/css/basic.css">
-        <script src="/gui/jquery/jquery.js"></script>
-    </head>
+<head>
+    <title>Management</title>
+    <link rel="shortcut icon" type="image/png" href="/gui/img/favicon.png"/>
+    <link rel="stylesheet" href="/gui/css/basic.css">
+    <script src="/gui/jquery/jquery.js"></script>
+</head>
 <body>
-    <table border=1 frame=void rules=rows>
-        <thead>
-            <td><b>Owner</b></td>
-            <td><b>Port</b></td>
-        </thead>
-        {{operator}}
-        <tr>
-            <td>{{.Email}}</td>
-            <td>{{.Port}}</td>
-        </tr>
-        {{end}}
-    </table>
+<table border=1 frame=void rules=rows>
+    <thead>
+    <td><b>Owner</b></td>
+    <td><b>Port</b></td>
+    </thead>
+    {{range .Operators}}
+    <tr>
+        <td>{{.Email}}</td>
+        <td>{{.Port}}</td>
+    </tr>
+    {{end}}
+</table>
 </body>
 </html>
