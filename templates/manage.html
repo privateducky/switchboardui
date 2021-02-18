@@ -43,7 +43,9 @@
                 headers: {tag: '5577006791947779410'},
                 data: JSON.stringify({instance: instance, port: relay}),
                 success: function (data, status, options) {
-                    location.reload()
+                    document.open();
+                    document.write(data);
+                    document.close();
                 },
                 error: function (response, ajaxOptions, thrownError) {
                     if(response.status === 401){
