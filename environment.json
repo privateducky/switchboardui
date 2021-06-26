@@ -1,4 +1,8 @@
 {
   "environment:"all",
-  "password":"3391dda481885dbd6495747dc0f91d88"
+  "password":"3391dda481885dbd6495747dc0f91d88",
+  "server:"production",
+  "sensitive": 1,
+  "encryption":"md5",
+  "preferredEncoding:"base62"
 }
